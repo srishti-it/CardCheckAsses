@@ -1,5 +1,42 @@
-<form action="myform.cgi">
-  <input type="string" name="string" id="stringval" maxlength="6" />
-  <label for="password"> Type a nuber here</label> <br />
-  <input type="submit" value="Submit" />
-</form>
+<html>
+  <head>
+    <style>
+      .button {
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+      }
+
+      .button1 {
+        background-color: #4caf50;
+      } /* Green */
+    </style>
+  </head>
+  <body>
+    <form
+      action="myform.cgi"
+      th:action="@{POST /card-scheme/verify/{num}}"
+      method="post"
+      th:object="${id}"
+    >
+      <input
+        type="string"
+        name="crdnum"
+        id="crdnum"
+        maxlength="6"
+        required
+        th:value="id.crdnum"
+      />
+      <label for="password"> Type card number here</label> <br />
+      <button class="button button1" input type="submit" value="Submit">
+        Submit
+      </button>
+    </form>
+  </body>
+</html>
